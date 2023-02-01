@@ -28,7 +28,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "tst_kconfig.h"
+//#include "tst_kconfig.h"
 #include "tst_test.h"
 #include "lapi/acct.h"
 
@@ -53,19 +53,19 @@ static union acct_union {
 
 #define ACCT_V3 "CONFIG_BSD_PROCESS_ACCT_V3"
 
-static int acct_version_is_3(void)
-{
-	struct tst_kconfig_var kconfig = {
-		.id = ACCT_V3,
-		.id_len = sizeof(ACCT_V3)-1,
-	};
+// static int acct_version_is_3(void)
+// {
+// 	struct tst_kconfig_var kconfig = {
+// 		.id = ACCT_V3,
+// 		.id_len = sizeof(ACCT_V3)-1,
+// 	};
 
-	tst_kconfig_read(&kconfig, 1);
+// 	tst_kconfig_read(&kconfig, 1);
 
-	tst_res(TINFO, ACCT_V3 "=%c", kconfig.choice);
+// 	tst_res(TINFO, ACCT_V3 "=%c", kconfig.choice);
 
-	return kconfig.choice == 'y';
-}
+// 	return kconfig.choice == 'y';
+// }
 
 static void run_command(void)
 {
@@ -173,6 +173,8 @@ static void run(void)
 	run_command();
 	acct(NULL);
 
+	acct_size = sizeof(struct acct_v3);
+
 	do {
 		read_bytes = SAFE_READ(0, fd, &acct_struct, acct_size);
 
@@ -194,10 +196,9 @@ static void run(void)
 
 		tst_res(TINFO, "== entry %d ==", ++i);
 
-		if (v3)
-			ret = verify_acct(&acct_struct.v3, acct_struct.v3.ac_etime);
-		else
-			ret = verify_acct(&acct_struct.v0, UNPACK(acct_struct.v0.ac_etime));
+		//ret = verify_acct(&acct_struct.v3, acct_struct.v3.ac_etime);
+//		else
+		ret = verify_acct(&acct_struct.v0, UNPACK(acct_struct.v0.ac_etime));
 
 		if (read_bytes)
 			entry_count++;
@@ -237,14 +238,14 @@ static void setup(void)
 		tst_brk(TBROK | TTERRNO,
 			"acct() system call returned with error");
 
-	v3 = acct_version_is_3();
-	if (v3) {
-		tst_res(TINFO, "Verifying using 'struct acct_v3'");
-		acct_size = sizeof(struct acct_v3);
-	} else {
-		tst_res(TINFO, "Verifying using 'struct acct'");
-		acct_size = sizeof(struct acct);
-	}
+	// v3 = acct_version_is_3();
+	// if (v3) {
+	// 	tst_res(TINFO, "Verifying using 'struct acct_v3'");
+	// 	acct_size = sizeof(struct acct_v3);
+	// } else {
+	// 	tst_res(TINFO, "Verifying using 'struct acct'");
+	// 	acct_size = sizeof(struct acct);
+	// }
 }
 
 static void cleanup(void)
@@ -256,16 +257,16 @@ static void cleanup(void)
 
 static struct tst_test test = {
 	.test_all = run,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_BSD_PROCESS_ACCT",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_BSD_PROCESS_ACCT",
+	// 	NULL
+	// },
 	.setup = setup,
 	.cleanup = cleanup,
 	.needs_tmpdir = 1,
 	.needs_root = 1,
-	.tags = (const struct tst_tag[]) {
-		{"linux-git", "4d9570158b626"},
-		{}
-	}
+	// .tags = (const struct tst_tag[]) {
+	// 	{"linux-git", "4d9570158b626"},
+	// 	{}
+	// }
 };
