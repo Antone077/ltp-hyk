@@ -143,10 +143,10 @@ static void verify_quota(unsigned int n)
 
 static struct tst_test test = {
 	.needs_root = 1,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_XFS_QUOTA",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_XFS_QUOTA",
+	// 	NULL
+	// },
 	.test = verify_quota,
 	.tcnt = ARRAY_SIZE(tcases),
 	.mount_device = 1,

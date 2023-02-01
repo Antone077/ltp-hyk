@@ -65,9 +65,9 @@ static struct tst_test test = {
 	.setup = setup,
 	.cleanup = cleanup,
 	.test_all = verify_msgget,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_CHECKPOINT_RESTORE=y",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_CHECKPOINT_RESTORE=y",
+	// 	NULL
+	// },
 	.needs_root = 1,
 };

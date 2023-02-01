@@ -49,10 +49,10 @@ static void do_test(void)
 
 static struct tst_test test = {
 	.test_all = do_test,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_USER_DECRYPTED_DATA=y",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_USER_DECRYPTED_DATA=y",
+	// 	NULL
+	// },
 	.tags = (const struct tst_tag[]) {
 		{ "linux-git", "5adedd42245af"},
 		{}

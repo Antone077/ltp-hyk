@@ -77,10 +77,10 @@ static struct tst_test test = {
 	.setup = setup,
 	.cleanup = cleanup,
 	.needs_root = 1,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_XFS_QUOTA",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_XFS_QUOTA",
+	// 	NULL
+	// },
 	.test_all = verify_quota,
 	.mount_device = 1,
 	.dev_fs_type = "xfs",

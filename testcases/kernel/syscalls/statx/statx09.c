@@ -148,10 +148,10 @@ static struct tst_test test = {
 	.format_device = 1,
 	.dev_fs_type = "ext4",
 	.dev_fs_opts = (const char *const []){"-O verity", NULL},
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_FS_VERITY",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_FS_VERITY",
+	// 	NULL
+	// },
 	.needs_cmds = (const char *[]) {
 		"mkfs.ext4 >= 1.45.2",
 		NULL

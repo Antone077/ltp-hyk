@@ -137,8 +137,8 @@ static struct tst_test test = {
 	.test_variants = ARRAY_SIZE(variants),
 	.needs_root = 1,
 	.forks_child = 1,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_TIME_NS=y",
-		NULL
-	}
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_TIME_NS=y",
+	// 	NULL
+	// }
 };

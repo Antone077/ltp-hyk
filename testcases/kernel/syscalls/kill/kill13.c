@@ -33,10 +33,10 @@ static void run(void)
 static struct tst_test test = {
 	.test_all = run,
 	.taint_check = TST_TAINT_W | TST_TAINT_D,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_UBSAN_SIGNED_OVERFLOW",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_UBSAN_SIGNED_OVERFLOW",
+	// 	NULL
+	// },
 	.tags = (const struct tst_tag[]) {
 		{"linux-git", "4ea77014af0d"},
 		{"CVE", "CVE-2018-10124"},

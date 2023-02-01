@@ -90,10 +90,10 @@ static void run(unsigned int i)
 static struct tst_test test = {
 	.tcnt = ARRAY_SIZE(tc),
 	.needs_tmpdir = 1,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_AIO=y",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_AIO=y",
+	// 	NULL
+	// },
 	.setup = setup,
 	.cleanup = cleanup,
 	.test = run,

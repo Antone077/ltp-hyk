@@ -147,13 +147,13 @@ static struct tst_test test = {
 		{&buffer, .size = 2048},
 		{},
 	},
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_NETFILTER_XT_MATCH_STATE",
-		"CONFIG_IP_NF_TARGET_REJECT",
-		"CONFIG_USER_NS=y",
-		"CONFIG_NET_NS=y",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_NETFILTER_XT_MATCH_STATE",
+	// 	"CONFIG_IP_NF_TARGET_REJECT",
+	// 	"CONFIG_USER_NS=y",
+	// 	"CONFIG_NET_NS=y",
+	// 	NULL
+	// },
 	.save_restore = (const struct tst_path_val[]) {
 		{"/proc/sys/user/max_user_namespaces", "1024", TST_SR_SKIP},
 		{}

@@ -79,10 +79,10 @@ static void cleanup(void)
 static struct tst_test test = {
 	.needs_tmpdir = 1,
 	.needs_root = 1,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_CHECKPOINT_RESTORE",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_CHECKPOINT_RESTORE",
+	// 	NULL
+	// },
 	.tcnt = ARRAY_SIZE(tcases),
 	.test = verify_msgrcv,
 	.setup = setup,

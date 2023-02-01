@@ -104,11 +104,11 @@ static struct tst_test test = {
 	.cleanup = cleanup,
 	.taint_check = TST_TAINT_W | TST_TAINT_D,
 	.max_runtime = 150,
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_USER_NS=y",
-		"CONFIG_NET_NS=y",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_USER_NS=y",
+	// 	"CONFIG_NET_NS=y",
+	// 	NULL
+	// },
 	.save_restore = (const struct tst_path_val[]) {
 		{"/proc/sys/user/max_user_namespaces", "1024", TST_SR_SKIP},
 		{}

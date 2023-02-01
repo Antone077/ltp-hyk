@@ -41,10 +41,10 @@ static void run(void)
 }
 
 static struct tst_test test = {
-	.needs_kconfigs = (const char *[]) {
-		"CONFIG_AIO=y",
-		NULL
-	},
+	// .needs_kconfigs = (const char *[]) {
+	// 	"CONFIG_AIO=y",
+	// 	NULL
+	// },
 	.test_all = run,
 };
 
